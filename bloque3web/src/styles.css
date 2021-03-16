@@ -1,0 +1,43 @@
+.container-admin{
+    display: flex;
+    padding-left: 15px;
+    padding-right: 15px;
+    justify-content: center;
+}
+.Card-newUser{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+.containerCard{
+   flex: 0 0 50%;
+   max-width: 50%;
+}
+
+.contentCard{
+    display: flex;
+}
+.form{
+    padding: 10%;
+    flex-direction: column;
+}
+table, td, th {  
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
+
+.Check{
+    margin:1%;
+}
+.buttons{
+    text-align: center;
+}
