@@ -7,9 +7,14 @@ import Navbar from '../components/navbar.js'
 const HomeAdmin=()=>{
 
     return(
-        <Navbar>
-
-        </Navbar>
+        <div className="container-admin">
+            <div className="Card-newUser">            
+                    <NewUser/>
+                <div>
+                    <TableUsers/>
+                </div>
+            </div>   
+        </div>
 
     )
 }

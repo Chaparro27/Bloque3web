@@ -4,19 +4,19 @@ function TableUsers(){
     const [data, setData]=React.useState();
     const columns = [
         {
-          nombre: "RFC",
+          nombre: "Bryan",
           usuario: "RFC",
-          acciones: "prueba/error"
+          acciones: "SuperAdmin"
         },
         {
-          nombre: "Cliente",
+          nombre: "Efren",
           usuario: "Cliente",
-          acciones: ""
+          acciones: "Eliminar"
         },
         {
-          nombre: "Celular",
-          usuario: "Celular",
-          acciones: ""
+          nombre: "Luis",
+          usuario: "Loopy@hotmail.com",
+          acciones: "Ver"
         }
       ];
       const mapeo =columns.map((column)=>
