@@ -13,7 +13,6 @@ import HomeUser from '../pages/HomeUser';
 const AppRouter = () => {
     
     const [cookies] = useCookies(['c_user'])
-    console.log(cookies.c_user)
     return (
         <Router>
             <Switch>

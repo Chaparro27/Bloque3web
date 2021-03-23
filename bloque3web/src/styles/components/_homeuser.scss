@@ -1,0 +1,61 @@
+
+.navbar__content{
+    padding: 10px;
+    background-color: #6262A4;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    button {
+        background-color: inherit;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 14px 16px;
+        transition: 0.3s;
+        font-size: 17px;
+        &:hover {
+            background-color: #ddd;
+        }
+        &:active{ 
+            background-color: #ccc;
+        }
+    }
+}
+
+/* Inicio */
+.content__inicio{
+    width: 70vw;
+    margin: auto;
+    // background-color: aqua;
+    font-family: Arial, Helvetica, sans-serif;
+    h1 {
+        font-size: 40px;
+        margin-top: 5vh;
+        text-align: center;
+    }
+    .content__autores{
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+        img {
+            border-radius: 100%;
+            max-width: 15vw;
+            max-height: 195px;
+        }
+        h3 {
+            margin-top: 8px;
+        }
+    }
+    #description {
+        padding: 3vw;
+        font-size: 18px;
+    }
+}
