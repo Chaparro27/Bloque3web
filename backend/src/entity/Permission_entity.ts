@@ -1,6 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, ManyToMany} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 import {MinLength, IsNotEmpty } from "class-validator";
-import { usuarios } from "./User_entity";
 
 @Entity()
 export class Permisos {

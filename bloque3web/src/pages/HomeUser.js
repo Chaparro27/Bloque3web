@@ -2,7 +2,11 @@ import { React, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 import Sidebar from '../components/Sidebar';
+import Fotos from './fragments/Fotos';
+import Ilustraciones from './fragments/Ilustraciones';
 import Inicio from './fragments/Inicio';
+import JMesa from './fragments/JMesa';
+import Videojuegos from './fragments/Videojuegos';
 
 const HomeUser = () => {
 
@@ -14,13 +18,13 @@ const HomeUser = () => {
             case 1:
                 return <Inicio />;
             case 2:
-                return <div> Fotos </div>;
+                return <Fotos />;
             case 3:
-                return <div> Ilustraciones</div>;
+                return <Ilustraciones />;
             case 4:
-                return <div> Juegos de mesa </div>;
+                return <JMesa />;
             case 5:
-                return <div> Videojuegos </div>;
+                return <Videojuegos />;
             default:
                 return <Inicio />;
         }

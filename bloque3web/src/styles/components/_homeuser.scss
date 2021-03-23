@@ -39,6 +39,37 @@
         margin-top: 5vh;
         text-align: center;
     }
+    .content__galery{
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+    .content__jmesa {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        display: flex;
+        text-align: center;
+        justify-content: space-around;
+        img {
+            max-width: 15vw;
+            max-height: 195px;
+        }
+        h3 {
+            margin-top: 8px;
+        }
+    }
+    .content__ilustration{
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+        div {
+            display: flex;
+            margin-bottom: 50px;
+            align-items: center;
+        }
+        p {            
+            margin-left: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    }
     .content__autores{
         margin-top: 5vh;
         margin-bottom: 5vh;

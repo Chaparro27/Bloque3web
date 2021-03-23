@@ -28,7 +28,6 @@ class UserController {
 
     async create(req: Request, res: Response) {
         const userRepository = getRepository(usuarios);
-        const permisionRepository = getRepository(Permisos);
 
         const {nombre, email, contraseña, permisos} = req.body;
 

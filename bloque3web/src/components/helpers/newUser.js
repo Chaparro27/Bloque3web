@@ -1,18 +1,20 @@
 import React from 'react'
-import { Formik, Field } from 'formik';
+import { Formik, Form, Field, FieldArray } from 'formik';
 import { CreateUser } from '../../actions/usersaction';
+import { getDefaultNormalizer } from '@testing-library/dom';
 
 const newUser = () => { 
     const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }]
     const permisos2 = [ { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 } ]
-    
+
+
     return (
         <Formik key="formik"
-            initialValues={{nombre:'', email:'', contraseña:'', permisos: [] }}
+            initialValues={{nombre:'', email:'', contraseña:'', permisos:[{}]}}
             onSubmit={async (data, { setSubmitting }) => {
                 setSubmitting(true);
-                let resp = await CreateUser(data, "user/create");
-                console.log(resp);
+              //  let resp = await CreateUser(data, "user/create");
+                console.log(data);
                 setSubmitting(false);
             }}
             >
@@ -46,7 +48,7 @@ const newUser = () => {
                                 <input
                                     className="auth__input" 
                                     type="password" 
-                                    name="contraseña"
+                                    name="contraseña" 
                                     value={values.password}
                                     onChange={handleChange}
                                     onBlur={handleBlur} 
@@ -57,7 +59,7 @@ const newUser = () => {
                             {
                                 permisos1.map(e => (
                                     <>
-                                        <Field key={e.valor} name="permisos" value={e.nombre} type="checkbox"/>
+                                        <Field key={e.valor} name="permisos.id" id={e.nombre} rel={e.nombre} value={e.nombre} type="checkbox"/>
                                         <label>{e.nombre}</label>
                                     </> 
                                 ))
@@ -67,7 +69,7 @@ const newUser = () => {
                             {
                                 permisos2.map(e => (
                                     <>
-                                        <Field value={e.valor} name="permisos.permisoid" value={e.nombre} type="checkbox"/>
+                                        <Field value={e.valor} name="permisos.id" value={e.nombre} type="checkbox"/>
                                         <label>{e.nombre}</label>
                                     </> 
                                 ))
@@ -81,7 +83,7 @@ const newUser = () => {
                     </div>
                 </form>
             )}
-</Formik>
+        </Formik>
     )
 }
 
