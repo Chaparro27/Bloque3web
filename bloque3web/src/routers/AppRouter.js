@@ -7,13 +7,13 @@ import AdminPrivateRoute from './AdminPrivateRoute';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
 import HomeAdmin from '../pages/homeAdmin';
-import { LoginPage } from '../pages/LoginPage';
+import LoginPage from '../pages/LoginPage';
 import HomeUser from '../pages/HomeUser';
 
 const AppRouter = () => {
     
     const [cookies] = useCookies(['c_user'])
-
+    console.log(cookies.c_user)
     return (
         <Router>
             <Switch>
@@ -25,7 +25,7 @@ const AppRouter = () => {
                     />
                 <PublicRoute 
                     path="/auth" 
-                    component={ HomeAdmin } 
+                    component={ LoginPage } 
                     isAuthenticated={ cookies.c_user === undefined ? false : cookies.c_user.isLogged }
                     adminUser={ cookies.c_user === undefined ? false : cookies.c_user.isadmin }
                     /> 

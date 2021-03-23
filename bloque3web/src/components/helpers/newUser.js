@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Field, FieldArray } from 'formik';
+import { Formik, Field } from 'formik';
 import { CreateUser } from '../../actions/usersaction';
 
 const newUser = () => { 
