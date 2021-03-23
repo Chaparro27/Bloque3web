@@ -1,6 +1,5 @@
-import React from 'react'
-import '../styles.css';
-import TableUsers from '../components/helpers/UsersTable.js'
+import React from 'react';
+import TableUsers from '../components/helpers/TableUsers.js'
 import NewUser from '../components/helpers/newUser.js'
 import Navbar from '../components/navbar.js'
 

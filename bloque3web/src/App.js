@@ -1,11 +1,13 @@
-import logo from './logo.svg';
-// import './App.css';
-import HomeAdmin from './components/homeAdmin';
+import {React} from 'react';
+import AppRouter from './routers/AppRouter';
 
-function App() {
-  return (
-    <HomeAdmin/>
-  );
+const App = () => {
+
+    return (    
+        <>
+            <AppRouter />
+        </>
+    );
 }
 
 export default App;
