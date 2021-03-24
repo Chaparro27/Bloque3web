@@ -1,17 +1,16 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
 import { CreateUser } from '../../actions/usersaction';
-import { getDefaultNormalizer } from '@testing-library/dom';
 
 export default function NewUser () { 
-    const { register, handleSubmit } = useForm({
-      });
+    const { register, handleSubmit } = useForm({});
     const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }, { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 }]
-    const permisos2 = [ { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 } ]
-    const onSubmit = async(data) =>  {const resp = await CreateUser(JSON.stringify(data), "user/create");
-    console.log(resp)
-    // const onSubmit = (data) =>  console.log(data)
+    
+    const onSubmit = async(data) =>  {
+        data.permisos = data.permisos.filter( e => e.permisoid > 0);
+        const resp = await CreateUser(data, "user/create");
     }
+
     return (
 
                 <form onSubmit={handleSubmit(onSubmit)} >          
