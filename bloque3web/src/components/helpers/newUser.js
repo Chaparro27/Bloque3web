@@ -1,25 +1,20 @@
 import React from 'react'
-import { Formik, Form, Field, FieldArray } from 'formik';
+import { useForm } from "react-hook-form";
 import { CreateUser } from '../../actions/usersaction';
 import { getDefaultNormalizer } from '@testing-library/dom';
 
-const newUser = () => { 
-    const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }]
+export default function NewUser () { 
+    const { register, handleSubmit } = useForm({
+      });
+    const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }, { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 }]
     const permisos2 = [ { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 } ]
-
-
+    const onSubmit = async(data) =>  {const resp = await CreateUser(JSON.stringify(data), "user/create");
+    console.log(resp)
+    // const onSubmit = (data) =>  console.log(data)
+    }
     return (
-        <Formik key="formik"
-            initialValues={{nombre:'', email:'', contraseña:'', permisos:[{}]}}
-            onSubmit={async (data, { setSubmitting }) => {
-                setSubmitting(true);
-              //  let resp = await CreateUser(data, "user/create");
-                console.log(data);
-                setSubmitting(false);
-            }}
-            >
-            {({ values, isSubmitting, handleChange, handleBlur, handleSubmit }) => (
-                <form onSubmit={handleSubmit}>          
+
+                <form onSubmit={handleSubmit(onSubmit)} >          
                     <div className="containerCard">
                         <div className="contentCard">                      
                             <img 
@@ -31,60 +26,58 @@ const newUser = () => {
                                     className="auth__input" 
                                     type="text" 
                                     name="nombre"
-                                    value={values.usuario}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur} 
+                                    ref={register}
                                     placeholder="Nombre"/>
                                 <br/>
                                 <input
                                     className="auth__input" 
                                     type="email" 
                                     name="email"
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur} 
+                                    ref={register}
                                     placeholder="Correo"/>
                                 <br/>
                                 <input
                                     className="auth__input" 
                                     type="password" 
                                     name="contraseña" 
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur} 
+                                    ref={register}
                                     placeholder="Contraseña"/>
                             </div>
                         </div>
                         <div className="Check">
                             {
-                                permisos1.map(e => (
+                                permisos1.map((e, index) => (
                                     <>
-                                        <Field key={e.valor} name="permisos.id" id={e.nombre} rel={e.nombre} value={e.nombre} type="checkbox"/>
+                                        <input key={index}
+                                         name={`permisos[${index}].permisoid`}
+                                         value={e.valor}
+                                         ref={register} type="checkbox"/>
                                         <label>{e.nombre}</label>
+                                        
                                     </> 
                                 ))
                             }
                         </div>
-                        <div className="Check">
-                            {
-                                permisos2.map(e => (
-                                    <>
-                                        <Field value={e.valor} name="permisos.id" value={e.nombre} type="checkbox"/>
-                                        <label>{e.nombre}</label>
-                                    </> 
-                                ))
-                            }
-                        </div>
+            {/* <div className="Check">
+                <input  name="permisos[0].permisoid" value="1" ref={register} type="checkbox"/>
+                <label>Página inicio</label>
+                <input name="permisos[1].permisoid" value="2" ref={register}  type="checkbox"/>
+                <label>Página fotos</label>
+                <input name="permisos[2].permisoid"  value="3" ref={register}  type="checkbox"/>
+                <label>Página ilustraciones</label>
+            </div>
+            <div className="Check">
+                <input name="permisos[3].permisoid"  value="4" ref={register} type="checkbox"/>
+                <label>Página juegos mesa</label>
+                <input name="permisos[4].permisoid"  value="5" ref={register} type="checkbox"/>
+                <label>Página videojuegos </label>
+            </div> */}
 
-                        <button className="button button1" type="submit" disabled={isSubmitting} >
+                        <button className="button button1" type="submit"  >
                             Guardar Nuevo
                         </button>
 
                     </div>
                 </form>
-            )}
-        </Formik>
     )
 }
-
-export default newUser
