@@ -65,10 +65,10 @@ class UserController {
         } catch (e) {
             return res.status(404).json({ message: 'Not found result' });
         }
-
-        user.hashPassword();
+        if(contraseña < 30) user.hashPassword();
         
         const errors = await validate(user);
+        
         if(errors.length > 0) return res.status(400).json(errors);
 
         try {

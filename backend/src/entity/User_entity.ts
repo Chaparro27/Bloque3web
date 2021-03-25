@@ -46,5 +46,4 @@ export class usuarios {
     checkPassword(contraseña: string): boolean {
         return bcrypt.compareSync(contraseña,this.contraseña);
     }
-
 }
