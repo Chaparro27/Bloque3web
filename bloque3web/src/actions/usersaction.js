@@ -40,13 +40,12 @@ export const DeleteUser = async (url) => {
 
 export const CreateUser = async (data, url) => {
     let response;
-    console.log(data);
-    // await Axios.post(BaseUrl+url, data).then( resp => {
-    //     response = resp.data;
-    // }).catch( e => {
-    //     console.log(e.response)
-    //     Swal.fire('Error', e.message, 'error');
-    // });
+    await Axios.post(BaseUrl+url, data).then( resp => {
+        response = resp.data;
+    }).catch( e => {
+        console.log(e.response)
+        Swal.fire('Error', e.message, 'error');
+    });
 
 
     return response;

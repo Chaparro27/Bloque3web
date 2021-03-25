@@ -7,8 +7,11 @@ export default function NewUser () {
     const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }, { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 }]
     
     const onSubmit = async(data) =>  {
-        data.permisos = data.permisos.filter( e => e.permisoid > 0);
+       data.permisos = data.permisos.filter( e => e.permisoid  > 0);
+
         const resp = await CreateUser(data, "user/create");
+        // console.log(resp, 'datos')
+        console.log('Respuesta', resp)
     }
 
     return (
@@ -49,7 +52,7 @@ export default function NewUser () {
                                     <>
                                         <input key={index}
                                          name={`permisos[${index}].permisoid`}
-                                         value={e.valor}
+                                         value={(parseInt(e.valor))}
                                          ref={register} type="checkbox"/>
                                         <label>{e.nombre}</label>
                                         
@@ -57,21 +60,6 @@ export default function NewUser () {
                                 ))
                             }
                         </div>
-            {/* <div className="Check">
-                <input  name="permisos[0].permisoid" value="1" ref={register} type="checkbox"/>
-                <label>Página inicio</label>
-                <input name="permisos[1].permisoid" value="2" ref={register}  type="checkbox"/>
-                <label>Página fotos</label>
-                <input name="permisos[2].permisoid"  value="3" ref={register}  type="checkbox"/>
-                <label>Página ilustraciones</label>
-            </div>
-            <div className="Check">
-                <input name="permisos[3].permisoid"  value="4" ref={register} type="checkbox"/>
-                <label>Página juegos mesa</label>
-                <input name="permisos[4].permisoid"  value="5" ref={register} type="checkbox"/>
-                <label>Página videojuegos </label>
-            </div> */}
-
                         <button className="button button1" type="submit"  >
                             Guardar Nuevo
                         </button>

@@ -5,7 +5,7 @@ import {MinLength, IsNotEmpty } from "class-validator";
 export class Permisos {
 
     constructor( permiso ) {
-        this.permisoid = permiso;
+        this.permisoid = +permiso;
     }
 
     @PrimaryGeneratedColumn()

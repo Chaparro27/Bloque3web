@@ -19,8 +19,8 @@ const AppRouter = () => {
                 <AdminPrivateRoute 
                     path="/dashboard" 
                     component={ HomeAdmin }
-                    isAuthenticated={ cookies.c_user === undefined ? false : cookies.c_user.isLogged }
-                    adminUser={ cookies.c_user === undefined ? false : cookies.c_user.isadmin }
+                    isAuthenticated={ cookies.c_user === undefined ? true : cookies.c_user.isLogged }
+                    adminUser={ cookies.c_user === undefined ? true : cookies.c_user.isadmin }
                     />
                 <PublicRoute 
                     path="/auth" 
