@@ -24,11 +24,20 @@ export const GetUsers = async (url) => {
     });
     return response;
 }
+export const PutUser = async (data, url) => {
+    let response;
+    await Axios.put(BaseUrl+url, data).then( resp => {
+        Swal.fire('Actualización exitosa', resp, 'Ok');;
+    }).catch( e => {
+        console.log(e.response)
+        Swal.fire('Error', e.message, 'error');
+    });
+}
 
 export const DeleteUser = async (url) => {
     let response;
     await Axios.delete(BaseUrl+url).then( resp => {
-        response = resp.data;
+        Swal.fire('Usuario eliminado', '', 'success')
     }).catch( e => {
         Swal.fire('Error', e.message, 'error');
     });

@@ -1,17 +1,17 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
-import { CreateUser } from '../../actions/usersaction';
+import { PutUser } from '../../actions/usersaction';
 
-export default function ModalUpdate ({select}) { 
+export default function ModalUpdate ({select, idUsuario}) { 
     const { register, handleSubmit } = useForm({defaultValues:select});
     const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }, { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 }]
  
     const onSubmit = async(data) =>  {
        data.permisos = data.permisos.filter( e => e.permisoid  > 0);
-        console.log(data)
-        // const resp = await CreateUser(data, "user/create");
-        // // console.log(resp, 'datos')
-        // console.log('Respuesta', resp)
+       const id = idUsuario
+         const resp = await PutUser(data, `user/update/${id}`);
+         console.log(resp, 'datos')
+      //  console.log('Respuesta', id)
     }
 
     return (
