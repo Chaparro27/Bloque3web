@@ -3,15 +3,17 @@ import { useForm } from "react-hook-form";
 import { CreateUser } from '../../actions/usersaction';
 
 export default function NewUser () { 
-    const { register, handleSubmit } = useForm({});
+    const { register, handleSubmit, reset } = useForm({});
     const permisos1 = [ { nombre: "Pagina Inicio", valor: 1 }, { nombre: "Pagina fotos", valor: 2 }, { nombre: "Pagina de ilustraciones", valor: 3 }, { nombre: "Pagina de juegos de mesa", valor: 4 }, { nombre: "Pagina de videojuegos", valor: 5 }]
     
     const onSubmit = async(data) =>  {
        data.permisos = data.permisos.filter( e => e.permisoid  > 0);
 
         const resp = await CreateUser(data, "user/create");
-        // console.log(resp, 'datos')
-        console.log('Respuesta', resp)
+
+        reset({});
+        
+        window.location.href = window.location.href;
     }
 
     return (
@@ -19,10 +21,10 @@ export default function NewUser () {
                 <form onSubmit={handleSubmit(onSubmit)} >          
                     <div className="containerCard">
                         <div className="contentCard">                      
-                            <img 
+                            {/* <img 
                                 width="40%" 
                                 src='https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'
-                                /> 
+                                />  */}
                             <div className="form">
                                 <input
                                     className="auth__input" 

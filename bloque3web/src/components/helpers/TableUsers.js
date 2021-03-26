@@ -84,8 +84,10 @@ const TableUsers=()=> {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
         const usid=idUser
-          const resp =  DeleteUser(`user/remove/${usid}`);
-          console.log(resp)
+          
+        const resp =  DeleteUser(`user/remove/${usid}`);
+          
+        window.location.href = window.location.href;
         }
     })
   }
